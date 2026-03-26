@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lehrer Dashboard - Blockpraktikum</title>
+    <style>
+        :root {
+  /* Primitive Color Tokens */
+  --color-white: rgba(255, 255, 255, 1);
+  --color-black: rgba(0, 0, 0, 1);
+  --color-cream-50: rgba(252, 252, 249, 1);
+  --color-cream-100: rgba(255, 255, 253, 1);
+  --color-gray-200: rgba(245, 245, 245, 1);
+  --color-gray-300: rgba(167, 169, 169, 1);
+  --color-gray-400: rgba(119, 124, 124, 1);
+  --color-slate-500: rgba(98, 108, 113, 1);
+  --color-brown-600: rgba(94, 82, 64, 1);
+  --color-charcoal-700: rgba(31, 33, 33, 1);
+  --color-charcoal-800: rgba(38, 40, 40, 1);
+  --color-slate-900: rgba(19, 52, 59, 1);
+  --color-teal-300: rgba(50, 184, 198, 1);
+  --color-teal-400: rgba(45, 166, 178, 1);
+  --color-teal-500: rgba(33, 128, 141, 1);
+  --color-teal-600: rgba(29, 116, 128, 1);
+  --color-teal-700: rgba(26, 104, 115, 1);
+  --color-teal-800: rgba(41, 150, 161, 1);
+  --color-red-400: rgba(255, 84, 89, 1);
+  --color-red-500: rgba(192, 21, 47, 1);
+  --color-orange-400: rgba(230, 129, 97, 1);
+  --color-orange-500: rgba(168, 75, 47, 1);
+
+  --color-brown-600-rgb: 94, 82, 64;
+  --color-teal-500-rgb: 33, 128, 141;
+  --color-slate-900-rgb: 19, 52, 59;
+  --color-slate-500-rgb: 98, 108, 113;
+  --color-red-500-rgb: 192, 21, 47;
+  --color-red-400-rgb: 255, 84, 89;
+  --color-orange-500-rgb: 168, 75, 47;
+  --color-orange-400-rgb: 230, 129, 97;
+
+  --color-bg-1: rgba(59, 130, 246, 0.08);
+  --color-bg-2: rgba(245, 158, 11, 0.08);
+  --color-bg-3: rgba(34, 197, 94, 0.08);
+  --color-bg-4: rgba(239, 68, 68, 0.08);
+  --color-bg-5: rgba(147, 51, 234, 0.08);
+  --color-bg-6: rgba(249, 115, 22, 0.08);
+  --color-bg-7: rgba(236, 72, 153, 0.08);
+  --color-bg-8: rgba(6, 182, 212, 0.08);
+
+  --color-background: var(--color-cream-50);
+  --color-surface: var(--color-cream-100);
+  --color-text: var(--color-slate-900);
+  --color-text-secondary: var(--color-slate-500);
+  --color-primary: var(--color-teal-500);
+  --color-primary-hover: var(--color-teal-600);
+  --color-primary-active: var(--color-teal-700);
+  --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+  --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-btn-primary-text: var(--color-cream-50);
+  --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-error: var(--color-red-500);
+  --color-success: var(--color-teal-500);
+  --color-warning: var(--color-orange-500);
+  --color-info: var(--color-slate-500);
+  --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+  --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
+
+  --focus-ring: 0 0 0 3px var(--color-focus-ring);
+  --focus-outline: 2px solid var(--color-primary);
+
+  --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 550;
+  --font-weight-bold: 600;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+
+  --radius-sm: 6px;
+  --radius-base: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-gray-400-rgb: 119, 124, 124;
+    --color-teal-300-rgb: 50, 184, 198;
+    --color-gray-300-rgb: 167, 169, 169;
+    --color-gray-200-rgb: 245, 245, 245;
+
+    --color-bg-1: rgba(29, 78, 216, 0.15);
+    --color-bg-2: rgba(180, 83, 9, 0.15);
+    --color-bg-3: rgba(21, 128, 61, 0.15);
+    --color-bg-4: rgba(185, 28, 28, 0.15);
+    --color-bg-5: rgba(107, 33, 168, 0.15);
+    --color-bg-6: rgba(194, 65, 12, 0.15);
+    --color-bg-7: rgba(190, 24, 93, 0.15);
+    --color-bg-8: rgba(8, 145, 178, 0.15);
+
+    --color-background: var(--color-charcoal-700);
+    --color-surface: var(--color-charcoal-800);
+    --color-text: var(--color-gray-200);
+    --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+    --color-primary: var(--color-teal-300);
+    --color-primary-hover: var(--color-teal-400);
+    --color-primary-active: var(--color-teal-800);
+    --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+    --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
+    --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
+    --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+    --color-error: var(--color-red-400);
+    --color-success: var(--color-teal-300);
+    --color-warning: var(--color-orange-400);
+    --color-info: var(--color-gray-300);
+    --color-btn-primary-text: var(--color-slate-900);
+    --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
+    --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
+  }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family-base);
+    background: var(--color-background);
+    color: var(--color-text);
+    line-height: var(--line-height-normal);
+}
+
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: var(--space-20);
+}
+
+.login-box {
+    background: var(--color-surface);
+    border: 1px solid var(--color-card-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-32);
+    width: 100%;
+    max-width: 400px;
+    box-shadow: var(--shadow-md);
+}
+
+.login-box h1 {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-24);
+    text-align: center;
+    color: var(--color-text);
+}
+
+.form-group {
+    margin-bottom: var(--space-16);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--space-8);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+}
+
+.form-group input, .form-group textarea, .form-group select {
+    width: 100%;
+    padding: var(--space-12);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-base);
+    font-size: var(--font-size-base);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-family: var(--font-family-base);
+}
+
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: var(--focus-ring);
+}
+
+.btn {
+    padding: var(--space-12) var(--space-24);
+    border: none;
+    border-radius: var(--radius-base);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-8);
+}
+
+.btn-primary {
+    background: var(--color-primary);
+    color: var(--color-btn-primary-text);
+}
+
+.btn-primary:hover {
+    background: var(--color-primary-hover);
+}
+
+.btn-secondary {
+    background: var(--color-secondary);
+    color: var(--color-text);
+}
+
+.btn-secondary:hover {
+    background: var(--color-secondary-hover);
+}
+
+.btn-full {
+    width: 100%;
+}
+
+.error-message {
+    color: var(--color-error);
+    font-size: var(--font-size-sm);
+    margin-top: var(--space-8);
+    text-align: center;
+}
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background: var(--color-surface);
+    border-right: 1px solid var(--color-border);
+    padding: var(--space-20);
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.sidebar h2 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-24);
+    color: var(--color-text);
+}
+
+.nav-menu {
+    list-style: none;
+}
+
+.nav-menu li {
+    margin-bottom: var(--space-8);
+}
+
+.nav-menu button {
+    width: 100%;
+    padding: var(--space-12);
+    text-align: left;
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-base);
+    color: var(--color-text);
+    cursor: pointer;
+    font-size: var(--font-size-base);
+    transition: all 0.2s;
+}
+
+.nav-menu button:hover {
+    background: var(--color-secondary);
+}
+
+.nav-menu button.active {
+    background: var(--color-primary);
+    color: var(--color-btn-primary-text);
+}
+
+.main-content {
+    flex: 1;
+    margin-left: 250px;
+    padding: var(--space-24);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-32);
+    padding-bottom: var(--space-16);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.header h1 {
+    font-size: var(--font-size-3xl);
+    color: var(--color-text);
+}
+
+.header-actions {
+    display: flex;
+    gap: var(--space-12);
+    align-items: center;
+}
+
+.card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-card-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-24);
+    margin-bottom: var(--space-24);
+    box-shadow: var(--shadow-sm);
+}
+
+.card h2 {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-16);
+    color: var(--color-text);
+}
+
+.card h3 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-12);
+    color: var(--color-text);
+}
+
+.week-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--space-16);
+}
+
+.week-table th,
+.week-table td {
+    border: 1px solid var(--color-border);
+    padding: var(--space-8);
+    text-align: left;
+    font-size: var(--font-size-sm);
+}
+
+.week-table th {
+    background: var(--color-secondary);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+}
+
+.week-table td input,
+.week-table td textarea {
+    width: 100%;
+    border: none;
+    background: transparent;
+    padding: var(--space-4);
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    font-family: var(--font-family-base);
+}
+
+.week-table td input:focus,
+.week-table td textarea:focus {
+    outline: 1px solid var(--color-primary);
+    background: var(--color-surface);
+}
+
+.week-table td textarea {
+    resize: vertical;
+    min-height: 40px;
+}
+
+.week-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-16);
+}
+
+.form-inline {
+    display: flex;
+    gap: var(--space-12);
+    margin-bottom: var(--space-16);
+    flex-wrap: wrap;
+}
+
+.form-inline input,
+.form-inline select {
+    flex: 1;
+    min-width: 150px;
+    padding: var(--space-8);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-base);
+    background: var(--color-surface);
+    color: var(--color-text);
+}
+
+.list-group {
+    list-style: none;
+}
+
+.list-group-item {
+    padding: var(--space-12);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-base);
+    margin-bottom: var(--space-8);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--color-surface);
+}
+
+.list-group-item-actions {
+    display: flex;
+    gap: var(--space-8);
+}
+
+.list-group-item button {
+    padding: var(--space-4) var(--space-12);
+}
+
+.hidden {
+    display: none;
+}
+
+.mb-16 {
+    margin-bottom: var(--space-16);
+}
+
+.mt-16 {
+    margin-top: var(--space-16);
+}
+
+.save-indicator {
+    position: fixed;
+    top: var(--space-20);
+    right: var(--space-20);
+    background: var(--color-success);
+    color: var(--color-btn-primary-text);
+    padding: var(--space-12) var(--space-20);
+    border-radius: var(--radius-base);
+    font-size: var(--font-size-sm);
+    box-shadow: var(--shadow-md);
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 1000;
+}
+
+.save-indicator.show {
+    opacity: 1;
+}
+
+.info-box {
+    background: var(--color-bg-2);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-base);
+    padding: var(--space-16);
+    margin-bottom: var(--space-24);
+}
+
+.info-box p {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+}
+
+.class-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-16);
+}
+
+.class-actions {
+    display: flex;
+    gap: var(--space-8);
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .no-print {
+        display: none !important;
+    }
+    
+    .sidebar {
+        display: none;
+    }
+    
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+    }
+    
+    .card {
+        border: 1px solid #ccc;
+        page-break-inside: avoid;
+    }
+    
+    .week-table {
+        page-break-inside: auto;
+    }
+    
+    .week-table tr {
+        page-break-inside: avoid;
+        page-break-after: auto;
+    }
+    
+    input, textarea, button {
+        border: none !important;
+        background: transparent !important;
+    }
+    
+    .print-only {
+        display: block !important;
+    }
+}
+
+.print-only {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+    
+    .main-content {
+        margin-left: 0;
+    }
+    
+    .week-table {
+        font-size: var(--font-size-xs);
+    }
+    
+    .form-inline {
+        flex-direction: column;
+    }
+    
+    .form-inline input,
+    .form-inline select {
+        width: 100%;
+    }
+}
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <div class="save-indicator" id="saveIndicator">✓ Gespeichert</div>
+
+    <script>
+        class TeacherDashboard {
+            constructor() {
+                this.currentView = 'klassenbuch';
+                this.currentWeek = this.getCurrentWeekKey();
+                this.isLoggedIn = false;
+                
+                // Datenstruktur - alles im Speicher (kein localStorage wegen Sandbox)
+                this.data = {
+                    classes: [
+                        {
+                            id: 1,
+                            name: '5a',
+                            students: ['Max Mustermann', 'Anna Schmidt', 'Tom Weber', 'Lisa Klein', 'Jan Müller']
+                        },
+                        {
+                            id: 2,
+                            name: '7b',
+                            students: ['Lisa Müller', 'Jan Klein', 'Sara Bauer', 'Tim Weber', 'Nina Hoffmann']
+                        }
+                    ],
+                    lessons: {},
+                    weekReflections: {}
+                };
+                
+                this.subjects = ['Sport', 'Technik', 'WBS', 'Deutsch', 'Mathematik', 'Englisch', 'Geschichte'];
+                this.weekdays = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag'];
+                
+                this.init();
+            }
+            
+            init() {
+                this.render();
+            }
+            
+            saveData() {
+                console.log('Daten gespeichert');
+                this.showSaveIndicator();
+            }
+            
+            showSaveIndicator() {
+                const indicator = document.getElementById('saveIndicator');
+                indicator.classList.add('show');
+                setTimeout(() => {
+                    indicator.classList.remove('show');
+                }, 2000);
+            }
+            
+            getCurrentWeekKey() {
+                const now = new Date();
+                const year = now.getFullYear();
+                const week = this.getWeekNumber(now);
+                return `${year}-W${String(week).padStart(2, '0')}`;
+            }
+            
+            getWeekNumber(date) {
+                const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+                const dayNum = d.getUTCDay() || 7;
+                d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+                const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+                return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+            }
+            
+            getWeekDateRange(weekKey) {
+                const [year, weekStr] = weekKey.split('-W');
+                const week = parseInt(weekStr);
+                const simple = new Date(year, 0, 1 + (week - 1) * 7);
+                const dow = simple.getDay();
+                const ISOweekStart = simple;
+                if (dow <= 4)
+                    ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);
+                else
+                    ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
+                const endDate = new Date(ISOweekStart);
+                endDate.setDate(ISOweekStart.getDate() + 4);
+                return `${ISOweekStart.toLocaleDateString('de-DE')} - ${endDate.toLocaleDateString('de-DE')}`;
+            }
+            
+            changeWeek(direction) {
+                const [year, weekStr] = this.currentWeek.split('-W');
+                let week = parseInt(weekStr);
+                let newYear = parseInt(year);
+                
+                if (direction === 'next') {
+                    week++;
+                    if (week > 52) {
+                        week = 1;
+                        newYear++;
+                    }
+                } else {
+                    week--;
+                    if (week < 1) {
+                        week = 52;
+                        newYear--;
+                    }
+                }
+                
+                this.currentWeek = `${newYear}-W${String(week).padStart(2, '0')}`;
+                this.render();
+            }
+            
+            login(password) {
+                if (password === 'lehrer2024') {
+                    this.isLoggedIn = true;
+                    this.render();
+                    return true;
+                }
+                return false;
+            }
+            
+            logout() {
+                this.isLoggedIn = false;
+                this.render();
+            }
+            
+            render() {
+                const app = document.getElementById('app');
+                
+                if (!this.isLoggedIn) {
+                    app.innerHTML = this.renderLogin();
+                    this.attachLoginListeners();
+                } else {
+                    app.innerHTML = this.renderApp();
+                    this.attachAppListeners();
+                }
+            }
+            
+            renderLogin() {
+                return `
+                    <div class="login-container">
+                        <div class="login-box">
+                            <h1>🎓 Lehrer Dashboard</h1>
+                            <form id="loginForm">
+                                <div class="form-group">
+                                    <label for="password">Passwort</label>
+                                    <input type="password" id="password" placeholder="Passwort eingeben" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-full">Anmelden</button>
+                                <div id="loginError" class="error-message hidden"></div>
+                            </form>
+
+                        </div>
+                    </div>
+                `;
+            }
+            
+            renderApp() {
+                return `
+                    <div class="app-container">
+                        ${this.renderSidebar()}
+                        <div class="main-content">
+                            ${this.renderHeader()}
+                            ${this.renderContent()}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            renderSidebar() {
+                return `
+                    <aside class="sidebar no-print">
+                        <h2>📚 Navigation</h2>
+                        <ul class="nav-menu">
+                            <li><button class="${this.currentView === 'klassenbuch' ? 'active' : ''}" data-view="klassenbuch">📖 Klassenbuch</button></li>
+                            <li><button class="${this.currentView === 'klassen' ? 'active' : ''}" data-view="klassen">👥 Klassenlisten</button></li>
+                        </ul>
+                    </aside>
+                `;
+            }
+            
+            renderHeader() {
+                return `
+                    <header class="header no-print">
+                        <h1>${this.getViewTitle()}</h1>
+                        <div class="header-actions">
+                            ${this.currentView === 'klassenbuch' || this.currentView === 'klassen' ? '<button class="btn btn-primary" id="exportPdfBtn">📄 Als PDF exportieren</button>' : ''}
+                            <button class="btn btn-secondary" id="logoutBtn">Abmelden</button>
+                        </div>
+                    </header>
+                `;
+            }
+            
+            getViewTitle() {
+                const titles = {
+                    klassenbuch: 'Digitales Klassenbuch',
+                    klassen: 'Klassenlisten-Verwaltung'
+                };
+                return titles[this.currentView] || 'Dashboard';
+            }
+            
+            renderContent() {
+                switch (this.currentView) {
+                    case 'klassenbuch':
+                        return this.renderKlassenbuch();
+                    case 'klassen':
+                        return this.renderKlassen();
+                    default:
+                        return this.renderKlassenbuch();
+                }
+            }
+            
+            renderKlassenbuch() {
+                const weekData = this.data.lessons[this.currentWeek] || {};
+                const dateRange = this.getWeekDateRange(this.currentWeek);
+                
+                return `
+                    <div class="print-only" style="margin-bottom: 20px;">
+                        <h1>Klassenbuch - Woche ${this.currentWeek}</h1>
+                        <p><strong>Zeitraum:</strong> ${dateRange}</p>
+                        <p><strong>Exportiert am:</strong> ${new Date().toLocaleDateString('de-DE', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="week-navigation no-print">
+                            <button class="btn btn-secondary" id="prevWeek">← Vorherige Woche</button>
+                            <div style="text-align: center;">
+                                <h2 style="margin-bottom: 4px;">${this.currentWeek}</h2>
+                                <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">${dateRange}</p>
+                            </div>
+                            <button class="btn btn-secondary" id="nextWeek">Nächste Woche →</button>
+                        </div>
+                        
+                        <table class="week-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 50px;">Std.</th>
+                                    ${this.weekdays.map(day => `<th>${day}</th>`).join('')}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(hour => `
+                                    <tr>
+                                        <td><strong>${hour}</strong></td>
+                                        ${this.weekdays.map((day, dayIndex) => {
+                                            const key = `${dayIndex}-${hour}`;
+                                            const lesson = weekData[key] || {};
+                                            return `
+                                                <td>
+                                                    <div style="margin-bottom: 4px;">
+                                                        <input type="text" 
+                                                               placeholder="Fach" 
+                                                               value="${lesson.fach || ''}" 
+                                                               data-day="${dayIndex}" 
+                                                               data-hour="${hour}" 
+                                                               data-field="fach"
+                                                               class="lesson-input no-print">
+                                                        <span class="print-only">${lesson.fach || ''}</span>
+                                                    </div>
+                                                    <div style="margin-bottom: 4px;">
+                                                        <input type="text" 
+                                                               placeholder="Lehrkraft" 
+                                                               value="${lesson.lehrkraft || ''}" 
+                                                               data-day="${dayIndex}" 
+                                                               data-hour="${hour}" 
+                                                               data-field="lehrkraft"
+                                                               class="lesson-input no-print">
+                                                        <span class="print-only" style="font-size: var(--font-size-xs); color: var(--color-text-secondary);">${lesson.lehrkraft || ''}</span>
+                                                    </div>
+                                                    <div style="margin-bottom: 4px;">
+                                                        <input type="text" 
+                                                               placeholder="Thema" 
+                                                               value="${lesson.thema || ''}" 
+                                                               data-day="${dayIndex}" 
+                                                               data-hour="${hour}" 
+                                                               data-field="thema"
+                                                               class="lesson-input no-print">
+                                                        <span class="print-only">${lesson.thema || ''}</span>
+                                                    </div>
+                                                    <div>
+                                                        <textarea placeholder="Bemerkungen" 
+                                                                  data-day="${dayIndex}" 
+                                                                  data-hour="${hour}" 
+                                                                  data-field="bemerkungen"
+                                                                  class="lesson-input no-print">${lesson.bemerkungen || ''}</textarea>
+                                                        <span class="print-only" style="font-size: var(--font-size-xs);">${lesson.bemerkungen || ''}</span>
+                                                    </div>
+                                                    <button class="btn btn-secondary no-print" 
+                                                            style="margin-top: 4px; padding: 2px 8px; font-size: var(--font-size-xs);"
+                                                            data-day="${dayIndex}" 
+                                                            data-hour="${hour}"
+                                                            onclick="app.deleteLesson(${dayIndex}, ${hour})">🗑️ Löschen</button>
+                                                </td>
+                                            `;
+                                        }).join('')}
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                        
+                        <div class="mt-16">
+                            <h3>Wochenreflexion</h3>
+                            <textarea id="weekReflection" 
+                                      placeholder="Reflexion zur Woche..." 
+                                      class="no-print"
+                                      style="width: 100%; min-height: 100px; padding: 12px; border: 1px solid var(--color-border); border-radius: var(--radius-base); background: var(--color-surface); color: var(--color-text); font-family: var(--font-family-base);">${this.data.weekReflections[this.currentWeek] || ''}</textarea>
+                            <div class="print-only" style="padding: 12px; border: 1px solid #ccc; margin-top: 8px; white-space: pre-wrap;">${this.data.weekReflections[this.currentWeek] || 'Keine Reflexion vorhanden'}</div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            renderKlassen() {
+                return `
+                    <div class="print-only" style="margin-bottom: 20px;">
+                        <h1>Klassenlisten-Übersicht</h1>
+                        <p><strong>Exportiert am:</strong> ${new Date().toLocaleDateString('de-DE', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                    </div>
+                    
+                    <div class="card no-print">
+                        <h2>Neue Klasse anlegen</h2>
+                        <form id="addClassForm" class="form-inline">
+                            <input type="text" id="className" placeholder="Klassenname (z.B. 8c)" required>
+                            <button type="submit" class="btn btn-primary">Klasse hinzufügen</button>
+                        </form>
+                    </div>
+                    
+                    ${this.data.classes.map(classItem => `
+                        <div class="card">
+                            <div class="class-header">
+                                <h2>Klasse ${classItem.name}</h2>
+                                <div class="class-actions no-print">
+                                    <button class="btn btn-primary" onclick="app.exportClassList(${classItem.id})">📄 PDF Export</button>
+                                    <button class="btn btn-secondary" onclick="app.editClass(${classItem.id})">✏️ Bearbeiten</button>
+                                    <button class="btn btn-secondary" onclick="app.deleteClass(${classItem.id})">🗑️ Löschen</button>
+                                </div>
+                            </div>
+                            <form class="form-inline mb-16 no-print" data-class-id="${classItem.id}">
+                                <input type="text" placeholder="Schülername" class="student-name-input">
+                                <button type="submit" class="btn btn-primary add-student-btn">Schüler hinzufügen</button>
+                            </form>
+                            <ul class="list-group">
+                                ${classItem.students.sort().map((student, index) => `
+                                    <li class="list-group-item">
+                                        <span>${index + 1}. ${student}</span>
+                                        <button class="btn btn-secondary remove-student-btn no-print" 
+                                                data-class-id="${classItem.id}" 
+                                                data-student-index="${index}">Entfernen</button>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                    `).join('')}
+                `;
+            }
+            
+            deleteLesson(day, hour) {
+                if (confirm('Diese Stunde wirklich löschen?')) {
+                    const key = `${day}-${hour}`;
+                    if (this.data.lessons[this.currentWeek]) {
+                        delete this.data.lessons[this.currentWeek][key];
+                        this.saveData();
+                        this.render();
+                    }
+                }
+            }
+            
+            editClass(classId) {
+                const classItem = this.data.classes.find(c => c.id === classId);
+                if (!classItem) return;
+                
+                const newName = prompt('Neuer Klassenname:', classItem.name);
+                if (newName && newName.trim()) {
+                    classItem.name = newName.trim();
+                    this.saveData();
+                    this.render();
+                }
+            }
+            
+            deleteClass(classId) {
+                if (confirm('Diese Klasse wirklich löschen? Alle Daten gehen verloren!')) {
+                    this.data.classes = this.data.classes.filter(c => c.id !== classId);
+                    this.saveData();
+                    this.render();
+                }
+            }
+            
+            exportClassList(classId) {
+                const classItem = this.data.classes.find(c => c.id === classId);
+                if (!classItem) return;
+                
+                // Erstelle temporären Print-Container
+                const printContent = `
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <meta charset="UTF-8">
+                        <title>Klassenliste ${classItem.name}</title>
+                        <style>
+                            body {
+                                font-family: Arial, sans-serif;
+                                padding: 40px;
+                                color: #000;
+                            }
+                            h1 {
+                                margin-bottom: 10px;
+                                font-size: 24px;
+                            }
+                            .meta {
+                                margin-bottom: 30px;
+                                font-size: 14px;
+                                color: #666;
+                            }
+                            table {
+                                width: 100%;
+                                border-collapse: collapse;
+                                margin-top: 20px;
+                            }
+                            th, td {
+                                border: 1px solid #333;
+                                padding: 10px;
+                                text-align: left;
+                            }
+                            th {
+                                background: #f0f0f0;
+                                font-weight: bold;
+                            }
+                            .checkbox {
+                                width: 20px;
+                                height: 20px;
+                                border: 2px solid #333;
+                                display: inline-block;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <h1>Klassenliste: ${classItem.name}</h1>
+                        <div class="meta">
+                            <p><strong>Anzahl Schüler:</strong> ${classItem.students.length}</p>
+                            <p><strong>Exportiert am:</strong> ${new Date().toLocaleDateString('de-DE', { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="width: 50px;">Nr.</th>
+                                    <th>Name</th>
+                                    <th style="width: 80px;">Anwesend</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${classItem.students.sort().map((student, idx) => `
+                                    <tr>
+                                        <td>${idx + 1}</td>
+                                        <td>${student}</td>
+                                        <td style="text-align: center;"><span class="checkbox"></span></td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </body>
+                    </html>
+                `;
+                
+                // Öffne Print-Dialog
+                const printWindow = window.open('', '_blank');
+                printWindow.document.write(printContent);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => {
+                    printWindow.print();
+                }, 250);
+            }
+            
+            attachLoginListeners() {
+                const form = document.getElementById('loginForm');
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const password = document.getElementById('password').value;
+                    const errorDiv = document.getElementById('loginError');
+                    
+                    if (this.login(password)) {
+                        errorDiv.classList.add('hidden');
+                    } else {
+                        errorDiv.textContent = 'Falsches Passwort!';
+                        errorDiv.classList.remove('hidden');
+                    }
+                });
+            }
+            
+            attachAppListeners() {
+                // Navigation
+                document.querySelectorAll('[data-view]').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        this.currentView = e.target.dataset.view;
+                        this.render();
+                    });
+                });
+                
+                // Logout
+                const logoutBtn = document.getElementById('logoutBtn');
+                if (logoutBtn) {
+                    logoutBtn.addEventListener('click', () => this.logout());
+                }
+                
+                // PDF Export
+                const exportBtn = document.getElementById('exportPdfBtn');
+                if (exportBtn) {
+                    exportBtn.addEventListener('click', () => {
+                        window.print();
+                    });
+                }
+                
+                // View-spezifische Listener
+                if (this.currentView === 'klassenbuch') {
+                    this.attachKlassenbuchListeners();
+                } else if (this.currentView === 'klassen') {
+                    this.attachKlassenListeners();
+                }
+            }
+            
+            attachKlassenbuchListeners() {
+                // Wochennavigation
+                const prevBtn = document.getElementById('prevWeek');
+                const nextBtn = document.getElementById('nextWeek');
+                
+                if (prevBtn) prevBtn.addEventListener('click', () => this.changeWeek('prev'));
+                if (nextBtn) nextBtn.addEventListener('click', () => this.changeWeek('next'));
+                
+                // Stundeneingaben
+                document.querySelectorAll('.lesson-input').forEach(input => {
+                    input.addEventListener('blur', (e) => {
+                        const day = e.target.dataset.day;
+                        const hour = e.target.dataset.hour;
+                        const field = e.target.dataset.field;
+                        const value = e.target.value;
+                        
+                        if (!this.data.lessons[this.currentWeek]) {
+                            this.data.lessons[this.currentWeek] = {};
+                        }
+                        
+                        const key = `${day}-${hour}`;
+                        if (!this.data.lessons[this.currentWeek][key]) {
+                            this.data.lessons[this.currentWeek][key] = {};
+                        }
+                        
+                        this.data.lessons[this.currentWeek][key][field] = value;
+                        this.saveData();
+                    });
+                });
+                
+                // Wochenreflexion
+                const reflectionInput = document.getElementById('weekReflection');
+                if (reflectionInput) {
+                    reflectionInput.addEventListener('blur', (e) => {
+                        this.data.weekReflections[this.currentWeek] = e.target.value;
+                        this.saveData();
+                    });
+                }
+            }
+            
+            attachKlassenListeners() {
+                // Neue Klasse
+                const addClassForm = document.getElementById('addClassForm');
+                if (addClassForm) {
+                    addClassForm.addEventListener('submit', (e) => {
+                        e.preventDefault();
+                        const name = document.getElementById('className').value.trim();
+                        if (name) {
+                            const newClass = {
+                                id: Date.now(),
+                                name: name,
+                                students: []
+                            };
+                            this.data.classes.push(newClass);
+                            this.saveData();
+                            this.render();
+                        }
+                    });
+                }
+                
+                // Schüler hinzufügen
+                document.querySelectorAll('.add-student-btn').forEach(btn => {
+                    btn.closest('form').addEventListener('submit', (e) => {
+                        e.preventDefault();
+                        const classId = parseInt(e.target.dataset.classId);
+                        const input = e.target.querySelector('.student-name-input');
+                        const studentName = input.value.trim();
+                        
+                        if (studentName) {
+                            const classItem = this.data.classes.find(c => c.id === classId);
+                            if (classItem) {
+                                classItem.students.push(studentName);
+                                this.saveData();
+                                this.render();
+                            }
+                        }
+                    });
+                });
+                
+                // Schüler entfernen
+                document.querySelectorAll('.remove-student-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const classId = parseInt(e.target.dataset.classId);
+                        const studentIndex = parseInt(e.target.dataset.studentIndex);
+                        
+                        const classItem = this.data.classes.find(c => c.id === classId);
+                        if (classItem && confirm('Schüler wirklich entfernen?')) {
+                            classItem.students.splice(studentIndex, 1);
+                            this.saveData();
+                            this.render();
+                        }
+                    });
+                });
+            }
+        }
+        
+        // App starten und global verfügbar machen
+        const app = new TeacherDashboard();
+    </script>
+</body>
+</html>
