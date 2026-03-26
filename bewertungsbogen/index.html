@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unterrichtsbewertung Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <h1>Unterrichtsbewertung</h1>
+            <p>Bewertungsbögen für die Unterrichtsbeobachtung mit vorgefertigten Bewertungssätzen</p>
+        </header>
+
+        <!-- Main Dashboard -->
+        <main id="dashboard" class="dashboard">
+            <div class="container">
+                <h2>Bewertungsdimensionen</h2>
+                <div class="category-grid">
+                    <div class="category-card" data-category="schülerhandeln">
+                        <div class="category-icon">👥</div>
+                        <h3>Schülerhandeln</h3>
+                        <p>Bewertung des Verhaltens und der Beteiligung der Schüler</p>
+                        <button class="btn btn--primary btn--full-width">Bewertung starten</button>
+                    </div>
+                    
+                    <div class="category-card" data-category="lehrerhandeln">
+                        <div class="category-icon">👨‍🏫</div>
+                        <h3>Lehrerhandeln</h3>
+                        <p>Bewertung der Unterrichtsführung und pädagogischen Methoden</p>
+                        <button class="btn btn--primary btn--full-width">Bewertung starten</button>
+                    </div>
+                    
+                    <div class="category-card" data-category="lernangebot">
+                        <div class="category-icon">📚</div>
+                        <h3>Lernangebot</h3>
+                        <p>Bewertung der Unterrichtsinhalte und Lernmöglichkeiten</p>
+                        <button class="btn btn--primary btn--full-width">Bewertung starten</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Evaluation Form -->
+        <section id="evaluation-form" class="evaluation-form hidden">
+            <div class="container">
+                <div class="form-header">
+                    <button id="back-btn" class="btn btn--outline">← Zurück</button>
+                    <div class="form-title">
+                        <h2 id="form-title"></h2>
+                        <p id="form-description"></p>
+                    </div>
+                </div>
+
+                <form id="evaluation-form-element">
+                    <!-- Quick Action Buttons -->
+                    <div class="quick-actions">
+                        <button type="button" id="select-all-positive" class="btn btn--secondary btn--sm">
+                            ✓ Alle positiven
+                        </button>
+                        <button type="button" id="select-all-neutral" class="btn btn--secondary btn--sm">
+                            ≈ Alle neutralen
+                        </button>
+                        <button type="button" id="clear-all" class="btn btn--outline btn--sm">
+                            ✕ Alle löschen
+                        </button>
+                    </div>
+
+                    <div id="form-categories"></div>
+                    
+                    <div class="form-group">
+                        <label for="additional-notes" class="form-label">Sonstige Beobachtungen</label>
+                        <textarea id="additional-notes" class="form-control" rows="4" placeholder="Weitere Beobachtungen und Notizen..."></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" id="ai-analysis-btn" class="btn btn--secondary btn--full-width">
+                            🤖 KI-Analyse anfordern
+                        </button>
+                        <button type="button" id="generate-pdf-btn" class="btn btn--primary btn--full-width">
+                            📄 PDF-Bericht erstellen
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- AI Analysis Modal -->
+        <div id="ai-modal" class="modal modal-overlay hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>KI-Analyse</h3>
+                    <button id="close-modal" class="btn btn--outline btn--sm">×</button>
+                </div>
+                <div class="modal-body">
+                    <div id="ai-loading" class="loading-state">
+                        <div class="loading-spinner"></div>
+                        <p>Analyse wird durchgeführt...</p>
+                    </div>
+                    <div id="ai-response" class="ai-response hidden"></div>
+                </div>
+                <div class="modal-footer">
+                    <button id="close-ai-modal" class="btn btn--primary">Schließen</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast Notifications -->
+        <div id="toast-container" class="toast-container"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
