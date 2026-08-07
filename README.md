@@ -1,5 +1,9 @@
 <div align="center">
 
+<a href="https://www.buymeacoffee.com/highfish">
+<img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174">
+</a>
+
 <img src="./logo.png" alt="trtKlassenbuch Logo" width="140" />
 
 # 📚✨ trtKlassenbuch
@@ -78,3 +82,4 @@ trtKlassenbuch/
 ## 📄 Lizenz
 
 Dieses Projekt steht unter der **MIT License**. Siehe [`LICENSE`](./LICENSE).
+
