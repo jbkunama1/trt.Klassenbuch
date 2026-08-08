@@ -10,10 +10,10 @@
 
 ### Buntes, modernes Klassenbuch für den Schulalltag 🏫
 
-![Status](https://img.shields.io/badge/Status-Aktiv-22c55e?style=for-the-badge&logo=github)
-![Frontend](https://img.shields.io/badge/Frontend-HTML%20%7C%20CSS%20%7C%20JavaScript-3b82f6?style=for-the-badge&logo=javascript)
-![Theme](https://img.shields.io/badge/UI-Colorful%20%2B%20Dark%20Mode-f59e0b?style=for-the-badge&logo=paintdotnet)
-![Lizenz](https://img.shields.io/badge/Lizenz-MIT-a855f7?style=for-the-badge&logo=open-source-initiative)
+[![Status](https://img.shields.io/badge/Status-Aktiv-22c55e?style=for-the-badge&logo=github)](https://github.com/jbkunama1/trt.Klassenbuch)
+[![Frontend](https://img.shields.io/badge/Frontend-HTML%20%7C%20CSS%20%7C%20JavaScript-3b82f6?style=for-the-badge&logo=javascript)](https://github.com/jbkunama1/trt.Klassenbuch)
+[![Theme](https://img.shields.io/badge/UI-Colorful%20%2B%20Dark%20Mode-f59e0b?style=for-the-badge&logo=paintdotnet)](https://github.com/jbkunama1/trt.Klassenbuch)
+[![Lizenz](https://img.shields.io/badge/Lizenz-MIT-a855f7?style=for-the-badge&logo=open-source-initiative)](https://github.com/jbkunama1/trt.Klassenbuch)
 
 </div>
 
